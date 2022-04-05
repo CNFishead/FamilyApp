@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import bcyrpt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import crypto from "crypto";
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
 const userSchema = mongoose.Schema(
   {
@@ -21,12 +21,30 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please add a password"],
-      minlength: 6,
+      minlength: 10,
     },
-    isAdmin: {
+    isSuperAdmin: {
       type: Boolean,
       required: true,
       default: false,
+    },
+    subscription: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Subscription",
+    },
+    profileImageUrl: {
+      type: String,
+      default: "/images/no-photo.png",
+    },
+    sex: {
+      type: String,
+      enum: ["male", "female"],
+    },
+    role: {
+      type: String,
+      enum: ["admin", "user", "account-owner"],
+      //if false then user || if true then admin
+      default: "user",
     },
     isActive: {
       type: Boolean,
@@ -84,4 +102,4 @@ userSchema.methods.getSignedJwtToken = function () {
 
 const User = mongoose.model("User", userSchema);
 
-export default User;
+module.exports = User;
