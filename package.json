@@ -1,0 +1,25 @@
+{
+  "name": "family-app",
+  "version": "1.0.0",
+  "description": "an app to help families connect with one another not with everyone elese",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CNFishead/FamilyApp.git"
+  },
+  "keywords": [
+    "family",
+    "social-media",
+    "social",
+    "media"
+  ],
+  "author": "Austin Howard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CNFishead/FamilyApp/issues"
+  },
+  "homepage": "https://github.com/CNFishead/FamilyApp#readme"
+}
