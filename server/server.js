@@ -1,13 +1,13 @@
 const express = require("express");
-const dotenv = require('dotenv')
-const connectDB = require('./config/db')
-const colors = require('colors')
-const path = require('path')
-const morgan = require('morgan')
-const fileUpload = require('express-fileupload')
-const mongoSanitize = require('express-mongo-sanitize')
-const xss = require('xss-clean')
-const hpp = require('hpp')
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const colors = require("colors");
+const path = require("path");
+const morgan = require("morgan");
+const fileUpload = require("express-fileupload");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const hpp = require("hpp");
 
 dotenv.config();
 
@@ -18,6 +18,10 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+const userRoutes = require("./routes/userRoutes");
+
+app.use("/api/users", userRoutes);
 
 app.use(express.json());
 app.use(fileUpload());
